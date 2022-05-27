@@ -10,16 +10,16 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if(list1==null && list2==null){
-            return list1;
-        }
-        if(list1==null){
-            return list2;
-        }
-        if(list2==null){
-            return list1;
-        }
-        ListNode head = new ListNode();
+        // if(list1==null && list2==null){
+        //     return list1;
+        // }
+        // if(list1==null){
+        //     return list2;
+        // }
+        // if(list2==null){
+        //     return list1;
+        // }
+         ListNode head = new ListNode();
         ListNode r= new ListNode();
         head.next = r;
 
