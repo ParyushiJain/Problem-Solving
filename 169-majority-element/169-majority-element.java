@@ -6,13 +6,9 @@ class Solution {
             return nums[0];
         }
      HashMap<Integer,Integer> hm=new HashMap<Integer,Integer>();
-        for(int i=0;i<l-1;i++){
+        for(int i=0;i<l;i++){
             int c=1;
-            for(int j=i+1;j<l;j++){
-                if(nums[i]==nums[j]){
-                    c++;
-                }
-            }
+            
             if(hm.containsKey(nums[i])){
                 int ic=hm.get(nums[i]);
                 c+=ic;
