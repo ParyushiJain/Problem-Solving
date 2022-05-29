@@ -20,8 +20,16 @@ class Solution {
             
         }
         
-   
-         int m=hm.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
-        return m;
+        int m;
+        int largest=0;
+        for (Map.Entry mapElement : hm.entrySet()) {
+            if( (int)mapElement.getValue()>(l/2)){
+                 m = (int)mapElement.getKey();
+                 largest=Integer.max(largest,m);
+            }
+      
+            
+        }
+        return largest;
     }
 }
