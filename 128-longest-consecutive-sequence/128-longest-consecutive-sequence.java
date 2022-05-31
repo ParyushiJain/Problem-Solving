@@ -4,9 +4,7 @@ class Solution {
             return 1;
         }
         Arrays.sort(nums);
-         for(int i=0;i<nums.length;i++){
-             System.out.print(nums[i]+" ");
-         }
+        
         int c=1;
         int l=0;
         for(int i=0;i<nums.length-1;i++){
