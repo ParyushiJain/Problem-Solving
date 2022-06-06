@@ -12,16 +12,20 @@
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
        ListNode t1=headA;
-      
+       ListNode t2=headB;
+       HashMap<ListNode,Integer> hm=new HashMap<ListNode,Integer>();
         while(t1!=null){
-              ListNode t2=headB;
-            while(t2!=null){
-              if(t1==t2){
-                  return t1;
-              }
-                t2=t2.next;
-                }
+            hm.put(t1,t1.val);
             t1=t1.next;
+        }
+        while(t2!=null){
+            if(hm.containsKey(t2)){
+                return t2;
+            }
+            else{
+                hm.put(t2,t2.val);
+                t2=t2.next;
+            }
         }
         return null;
     }
