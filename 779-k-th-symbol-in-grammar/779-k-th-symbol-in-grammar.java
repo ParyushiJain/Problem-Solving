@@ -7,7 +7,7 @@ class Solution {
             return kthGrammar(n-1,k);
         }
         else{
-            return 1-(kthGrammar(n-1,k-(int)(Math.pow(2,n-2))));
+            return 1^(kthGrammar(n-1,k-(int)(Math.pow(2,n-2))));
         }
     }
 }
