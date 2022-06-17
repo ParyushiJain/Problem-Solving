@@ -19,12 +19,11 @@ class Solution {
         List<Integer> op1=new ArrayList(i); 
         List<Integer> op2=new ArrayList(i); 
         op2.add(al.get(0));
-        int x=al.get(0);
-        // ArrayList<Integer> ip=new ArrayList(al);
-        al.remove(0);
-        solve(al,op1);
-        solve(al,op2);
-       al.add(0,x);
+        ArrayList<Integer> ip=new ArrayList(al);
+        ip.remove(0);
+        solve(ip,op1);
+        solve(ip,op2);
+       
         
     }
 }
