@@ -20,8 +20,12 @@ class Solution {
             r.add(op);
             return;
         }
-        if((s.charAt(0)>=97 &&s.charAt(0)<=122)){
-         String op1=op+s.charAt(0);
+        if((s.charAt(0)>=97 &&s.charAt(0)<=122)||(s.charAt(0)>=65 &&s.charAt(0)<=90)){
+         String op1="";
+	        
+	        
+	        op1+=s.charAt(0);
+	        op1=op+op1.toLowerCase();
 	        String op2="";
 	        
 	        
@@ -30,17 +34,6 @@ class Solution {
 	        s=removeF(s);
 	        permute(s,op1);
 	        permute(s,op2);
-        }
-        else if((s.charAt(0)>=65 &&s.charAt(0)<=90)){
-           String op1=op+s.charAt(0);
-	        String op2="";
-	        
-	        
-	        op2+=s.charAt(0);
-	        op2=op+op2.toLowerCase();
-	        s=removeF(s);
-	        permute(s,op1);
-	        permute(s,op2);  
         }
         else{
             String op1="";
