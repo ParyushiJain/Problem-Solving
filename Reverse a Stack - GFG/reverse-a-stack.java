@@ -47,10 +47,7 @@ class GFG
 class Solution
 
 { 
-    public static void insert(Stack<Integer> s,int x){
-       s.push(x);
-        
-    }
+    
     public static void rev(Stack<Integer> s){
         if(s.empty()){
             return;
@@ -58,7 +55,7 @@ class Solution
         int x=s.peek();
         s.pop();
         rev(s);
-        insert(s,x);
+        s.push(x);
     }
     static ArrayList<Integer> reverse(Stack<Integer> s)
     {
