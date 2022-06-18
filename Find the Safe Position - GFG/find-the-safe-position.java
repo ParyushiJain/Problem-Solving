@@ -31,7 +31,7 @@ class Solution {
             
             al.add(i+1);
         } 
-       solve(al,k-1,0);
+       solve(al,k,0);
        
       
        return al.get(0);
@@ -41,7 +41,7 @@ class Solution {
             
             return;
         }
-     id=((id+k)%al.size());
+     id=((id+k-1)%al.size());
         al.remove(id);
        
         solve(al,k,id);
