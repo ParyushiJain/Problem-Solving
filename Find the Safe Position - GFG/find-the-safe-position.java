@@ -25,9 +25,7 @@ class GFG {
 class Solution {
     static ArrayList<Integer> al;
     static int safePos(int n, int k) {
-        if(n==1){
-            return 1;
-        }
+       
         al=new ArrayList(); 
         for(int i=0;i<n;i++){
             
