@@ -6,7 +6,7 @@ class Solution {
             if(nums[i]>nums[i+1]){
                 inc=false;
             }
-             if(nums[i]<nums[i+1]) dec=false;
+             else if(nums[i]<nums[i+1]) dec=false;
         }
         return inc||dec;
     }
