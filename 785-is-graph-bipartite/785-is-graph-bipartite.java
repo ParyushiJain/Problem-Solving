@@ -12,22 +12,19 @@ class Solution {
         return true;
     }
     public boolean check(int i,int[] vis,int[][] graph){
-        
-        Queue<Integer> q=new LinkedList();
-        q.add(i);
-        vis[i]=0;
-        while(q.isEmpty()==false){
-            int n=q.poll();
-        for(int el:graph[n]){
+       
+        for(int el:graph[i]){
             if(vis[el]==-1){
-                vis[el]=1-vis[n];
-                q.add(el);
-            }
-            else if(vis[el]==vis[n]){
+                vis[el] = 1 - vis[i];
+
+                if (!check(el, vis, graph)) return false;
+            } 
+           
+            
+            else if(vis[el]==vis[i]){
                 return false;
             }
         }
-        }
-       return true; 
+        return true;
     }
 }
