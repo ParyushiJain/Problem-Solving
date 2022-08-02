@@ -1,45 +1,37 @@
 class Solution {
-    List<String> r;
     public String removeF(String s){
-        String r="";
-        for(int i=1;i<s.length();i++){
-            r+=s.charAt(i);
-            
-        }
-        return r;
+        s=s.substring(1);
+        return s;
     }
     public List<String> letterCasePermutation(String s) {
+        List<String> r=new ArrayList();
         String op="";
-        r=new ArrayList();
-        permute(s,op);
-    
+        permute(s,op,r);
         return r;
     }
-    public void permute(String s,String op){
+    public void permute(String s,String op, List<String> r){
         if(s.length()==0){
             r.add(op);
             return;
         }
-        if((s.charAt(0)>=97 &&s.charAt(0)<=122)||(s.charAt(0)>=65 &&s.charAt(0)<=90)){
+     if((s.charAt(0)>=65 && s.charAt(0)<=90) ||(s.charAt(0)>=97 && s.charAt(0)<=122) ){
          String op1="";
-	        
-	        
-	        op1+=s.charAt(0);
-	        op1=op+op1.toLowerCase();
-	        String op2="";
-	        
-	        
-	        op2+=s.charAt(0);
-	        op2=op+op2.toUpperCase();
-	        s=removeF(s);
-	        permute(s,op1);
-	        permute(s,op2);
-        }
+         String op2="";
+         op1+=s.charAt(0);
+         op1=op1.toUpperCase();
+         op1=op+op1;
+         op2+=s.charAt(0);
+         op2=op2.toLowerCase();
+         op2=op+op2;
+         s=removeF(s);
+         permute(s,op1,r);
+         permute(s,op2,r);
+         
+     }
         else{
-            String op1="";
-            op1=op+s.charAt(0);
+            op+=s.charAt(0);
             s=removeF(s);
-            permute(s,op1);
+            permute(s,op,r);
         }
     }
 }
