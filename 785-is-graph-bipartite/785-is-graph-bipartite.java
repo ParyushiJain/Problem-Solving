@@ -12,7 +12,7 @@ class Solution {
         return true;
     }
     public boolean check(int i,int[] vis,int[][] graph){
-       
+      
         for(int el:graph[i]){
             if(vis[el]==-1){
                 vis[el] = 1 - vis[i];
