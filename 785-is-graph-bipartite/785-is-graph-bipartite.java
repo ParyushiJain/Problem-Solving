@@ -10,10 +10,11 @@ class Solution {
         return true;
     }
     public boolean bfs(int i,int[] col,int[][] graph){
-     
+   
         for(int el:graph[i]){
             if(col[el]==-1){
                 col[el]=1-col[i];
+                System.out.println(col[el]);
                 if(!bfs(el,col,graph)) return false;
             }
             else if(col[el]==col[i]) return false;
