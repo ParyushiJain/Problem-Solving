@@ -10,21 +10,15 @@ class Solution {
         return true;
     }
     public boolean bfs(int i,int[] col,int[][] graph){
-        col[i]=1;
-        Queue<Integer> q=new LinkedList();
-        q.add(i);
-        while(q.isEmpty()==false){
-            int n=q.poll();
-            for(int el:graph[n]){
-                if(col[el]==-1){
-                    col[el]=1-col[n];
-                    q.add(el);
-                }
-                else if(col[el]==col[n]){
-                    return false;
-                }
+     
+        for(int el:graph[i]){
+            if(col[el]==-1){
+                col[el]=1-col[i];
+                if(!bfs(el,col,graph)) return false;
             }
+            else if(col[el]==col[i]) return false;
         }
-        return true;
+    
+    return true;
     }
 }
