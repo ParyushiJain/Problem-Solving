@@ -1,21 +1,20 @@
 class Solution {
     public int search(int[] nums, int target) {
-        return binSearch(0,nums.length-1,nums,target); 
+        return Bs(0,nums.length-1,nums,target);
     }
-    public int binSearch(int s,int e,int[] nums,int t){
-        int m=(s+e)/2;
-        if(s>e){
-            return -1;
+    int Bs(int l,int h, int[] nums,int t){
+        int m=(l+h)/2;
+        while(l<=h){
+            if(t==nums[m]){
+                return m;
+            }
+            else if(t<nums[m]){
+                return Bs(0,m-1,nums,t);
+            }
+            else{
+                return Bs(m+1,h,nums,t);
+            }
         }
-        if(nums[m]==t){
-            return m;
-        }
-       else if(t<nums[m]){
-            return binSearch(s,m-1,nums,t);
-        }
-        else{
-            return binSearch(m+1,e,nums,t);
-        }
-       
+        return -1;
     }
 }
