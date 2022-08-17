@@ -1,7 +1,7 @@
 class Solution {
     private String transformString(String s) {
         Map<Character, Integer> indexMapping = new HashMap<>();
-        StringBuilder builder = new StringBuilder();
+        String r="";
         
         for (int i = 0; i < s.length(); ++i) {
             char c1 = s.charAt(i);
@@ -10,13 +10,14 @@ class Solution {
                 indexMapping.put(c1, i);
             }
             
-            builder.append(Integer.toString(indexMapping.get(c1)));
-            builder.append(" ");
+           r+=Integer.toString(indexMapping.get(c1));
+            r+=" ";
         }
-        return builder.toString();
+        return r;
     }
     
     public boolean isIsomorphic(String s, String t) {
+       
         return transformString(s).equals(transformString(t));
     }
 }
