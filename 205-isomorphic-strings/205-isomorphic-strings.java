@@ -17,7 +17,6 @@ class Solution {
     }
     
     public boolean isIsomorphic(String s, String t) {
-        System.out.print(transformString(s)+" "+transformString(t));
         return transformString(s).equals(transformString(t));
     }
 }
