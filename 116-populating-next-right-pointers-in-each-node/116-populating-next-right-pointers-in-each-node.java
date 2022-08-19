@@ -23,7 +23,9 @@ class Node {
 
 class Solution {
     public Node connect(Node root) {
-       if(root==null) return null;
+        if(root==null){
+            return null;
+        }
         root.next=null;
         trav(root.left,root.right);
         return root;
