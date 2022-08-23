@@ -9,9 +9,7 @@ class Solution {
       for(int i=0;i<edges.length;i++){
           union(edges[i][0],edges[i][1],rank,par);
       }
-        for(int i=0;i<n;i++){
-            System.out.print(par[i]+" ");
-        }
+        
         if(findPar(s,par)==findPar(d,par)) return true;
         else return false;
     
