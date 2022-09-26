@@ -1,49 +1,48 @@
 class Solution {
-    int[] parent = new int[26];
-    int[] rank = new int[26];
-    public boolean equationsPossible(String[] equations) {
-        
-        for(int i = 0;i<26;i++){
-            parent[i] = i;
-            rank[i] = 0;
+    public boolean equationsPossible(String[] e) {
+        int[] p=new int[26];
+        int[] r=new int[26];
+        for(int i=0;i<26;i++){
+            r[i]=0;
+            p[i]=i;
         }
-        
-        for(String s : equations){
-            if(s.charAt(1)=='='){
-                int a = s.charAt(0)-'a';
-                int b = s.charAt(3)-'a';
-                union(a,b);
+        for(int i=0;i<e.length;i++){
+            if(e[i].charAt(1)=='='){
+                union(e[i].charAt(0)-97,e[i].charAt(3)-97,r,p);
             }
+            
         }
-        for(String s : equations){
-            if(s.charAt(1)=='!'){
-                int a = s.charAt(0)-'a';
-                int b = s.charAt(3)-'a';
-                int parentA = findParent(a);
-                int parentB = findParent(b);
-                if(parentA==parentB) return false;
-                
+         for(int i=0;i<e.length;i++){
+            if(e[i].charAt(1)=='!'){
+             
+                if(find(e[i].charAt(0)-97,p)==find(e[i].charAt(3)-97,p)) return false;
+            
             }
+            
         }
+    
         return true;
+        
     }
-    
-    public int findParent(int i){
-        if(i==parent[i])
-            return parent[i];
-        return parent[i] = findParent(parent[i]);
+    public int find(int u,int[] p){
+     
+       
+        if(u==p[u]) return u;
+        return p[u]=find(p[u],p);
     }
-    
-    public void union(int a, int b){
-        int u = findParent(a);
-        int v = findParent(b);
-        if(rank[u]<rank[v]){
-            parent[u] = v;
-        }else if(rank[v]<rank[u]){
-            parent[v] = u;
-        }else{
-            parent[v] = u;
-            rank[u]++;
+    public void union(int u,int v,int[] r,int par[]){
+       
+        u=par[u];
+        v=par[v];
+        if(r[u]>r[v]){
+            par[v]=u;
+        }
+        else if(r[v]>r[u]){
+        par[u]=v; 
+        }
+        else{
+            par[v]=u;
+             r[u]++;
         }
     }
 }
