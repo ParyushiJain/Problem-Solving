@@ -36,22 +36,27 @@ class GFG {
 class Solution {
     // Function to return Breadth First Traversal of given graph.
     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
-        // Code here
-        ArrayList<Integer> r=new ArrayList();
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        int s=0;
         int[] vis=new int[V];
+        bfs(s,vis,adj,al);
+        
+        return al;
+    }
+    public void bfs(int node,int[] vis,ArrayList<ArrayList<Integer>> adj,ArrayList<Integer> r){
         Queue<Integer> q=new LinkedList();
-        q.add(0);
-        vis[0]=1;
-       while(!q.isEmpty()){
-           int t=q.poll();
-           r.add(t);
-           for(int in:adj.get(t)){
-               if(vis[in]!=1){
-               vis[in]=1;
-               q.add(in);
-               }
-           }
-       }
-        return r;
+        q.add(node);
+        vis[node]=1;
+        
+        while(q.isEmpty()==false){
+            int n=q.poll();
+            r.add(n);
+            for(int i:adj.get(n)){
+                if(vis[i]==0){
+                    vis[i]=1;
+                    q.add(i);
+                }
+            }
+        }
     }
 }
