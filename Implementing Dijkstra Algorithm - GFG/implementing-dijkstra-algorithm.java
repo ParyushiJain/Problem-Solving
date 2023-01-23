@@ -53,41 +53,40 @@ class DriverClass
 
 
 //User function Template for Java
-class Node {
+
+class pair{
     int dist;
     int node;
-    
-    public Node(int dist,int node){
+    public pair(int dist,int node){
         this.dist=dist;
         this.node=node;
     }
-    
 }
-
 class Solution
 {
     //Function to find the shortest distance of all the vertices
     //from the source vertex S.
     static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
     {
-     int[] dis=new int[V];
-     for(int i=0;i<V;i++){
-         dis[i]=Integer.MAX_VALUE;
-         
-     }
-     PriorityQueue<Node> pq =  new PriorityQueue<Node>((x,y) -> x.dist - y.dist);
-     pq.add(new Node(0,S));
-     dis[S]=0;
-     while(pq.size()!=0){
-         Node n=pq.poll();
-         for(ArrayList<Integer> el:adj.get(n.node)){
-             if(el.get(1)+n.dist<dis[el.get(0)]){
-                 dis[el.get(0)]=el.get(1)+n.dist;
-                 pq.add(new Node(dis[el.get(0)],el.get(0)));
-             }
-         }
-     }
-      return dis; 
+        // Write your code here
+        int[] disArray=new int[V];
+        Arrays.fill(disArray,Integer.MAX_VALUE);
+        disArray[S]=0;
+        PriorityQueue<pair> pq=new PriorityQueue<pair>((x,y)->x.dist-y.dist);
+        pq.add(new pair(0,S));
+        while(!pq.isEmpty()){
+            int d=pq.peek().dist;
+            int n=pq.peek().node;
+            pq.poll();
+            for(ArrayList<Integer> i:adj.get(n)){
+                
+                if((i.get(1)+d)<disArray[i.get(0)]){
+                    disArray[i.get(0)]=i.get(1)+d;
+                    pq.add(new pair(disArray[i.get(0)],i.get(0)));
+                }
+            }
+        }
+        return disArray;
     }
 }
 
