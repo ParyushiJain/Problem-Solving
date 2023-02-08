@@ -33,37 +33,34 @@ class GFG {
 
 // User function Template for Java
 class pair{
-    int n;
-    int d;
-    public pair(int n,int d){
-        this.n=n;
-        this.d=d;
+    int nd;
+    int dist;
+    public pair(int nd,int dist){
+        this.nd=nd;
+        this.dist=dist;
     }
 }
 class Solution {
     int minimumMultiplications(int[] arr, int start, int end) {
 
         // Your code here
-        int[] arrd=new int[100000];
-        Arrays.fill(arrd,Integer.MAX_VALUE);
-        arrd[start]=0;
-        Queue<pair> q=new LinkedList();
+        int[] dis=new int[100000];
+        Queue<pair> q=new LinkedList<>();
         q.add(new pair(start,0));
+        Arrays.fill(dis,Integer.MAX_VALUE);
+        dis[start]=0;
         while(q.isEmpty()==false){
-            int nd=q.peek().n;
-            int ds=q.peek().d;
-            
+            int n=q.peek().nd;
+            int d=q.peek().dist;
+            if(n==end) return d;
             q.poll();
             for(int i:arr){
-                int nm=(nd*i)%100000;
-                if(nm==end) return ds+1;
-                if(ds+1<arrd[nm]){
-                    arrd[nm]=ds+1;
-                    q.add(new pair(nm,ds+1));
+                if(d+1<dis[(n*i)%100000]){
+                    dis[(n*i)%100000]=d+1;
+                    q.add(new pair(((n*i)%100000),d+1));
                 }
             }
         }
-       return -1;
-        
+        return -1;
     }
 }
