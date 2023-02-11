@@ -36,8 +36,7 @@ class Solution{
     }
     static int solve(String s,int i,int j,int val){
         if(i>j) return 0;
-        if(val==1 && dp[i][j][1]!=-1)  return dp[i][j][1];
-        else if(dp[i][j][0]!=-1) return dp[i][j][0];
+        if(dp[i][j][val]!=-1) return dp[i][j][val];
         if(i==j){
              int boolVal=s.charAt(i)=='T'?1:0;
             if(val==boolVal) return 1;
