@@ -37,23 +37,37 @@ class Solution {
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         int[] vis=new int[V];
-        for(int i=0;i<V;i++){
+        for(int i=1;i<V;i++){
             if(vis[i]==0){
-                 if(dfs(i,-1,vis,adj)) return true;
+                 if(bfs(i,vis,adj)) return true;
             }
         }
         return false;
     }
-    public boolean dfs(int node,int par,int vis[],ArrayList<ArrayList<Integer>> adj){
+    public boolean bfs(int node,int[] vis,ArrayList<ArrayList<Integer>> adj){
+        Queue<pair> q=new LinkedList<>();
+        q.add(new pair(node,-1));
         vis[node]=1;
-        for(int el:adj.get(node)){
-            if(el!=par){
-                if(vis[el]==1) return true;
-                else{
-                    if(dfs(el,node,vis,adj)) return true;
+        while(q.isEmpty()==false){
+            int nd=q.peek().nd;
+            int pr=q.peek().par;
+            q.poll();
+            for(int el:adj.get(nd)){
+                if(vis[el]==0){ 
+                    vis[el]=1;
+                    q.add(new pair(el,nd));
                 }
+                else if(el!=pr) return true;
             }
         }
         return false;
+    }
+}
+class pair{
+    int nd;
+    int par;
+    public pair(int nd,int par){
+        this.nd=nd;
+        this.par=par;
     }
 }
