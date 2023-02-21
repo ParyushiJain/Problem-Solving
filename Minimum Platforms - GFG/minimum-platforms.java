@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -35,6 +35,7 @@ class GFG
 }
 
 
+
 // } Driver Code Ends
 
 
@@ -46,25 +47,27 @@ class Solution
     //railway station such that no train waits.
     static int findPlatform(int arr[], int dep[], int n)
     {
-      Arrays.sort(arr);
-      Arrays.sort(dep);
-      int p = 1;
-      int mp = 1;
-      int i=1;
-      int j=0;
-      while(i<arr.length && j<dep.length) {
-          if(arr[i]<=dep[j]){
-              p++;
-              i++;
-          }
-          else{
-              j++;
-              p--;
-              
-          }
-          mp=Math.max(mp,p);
-      }
-      return mp;
+        // add your code here
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+        int p=1;
+        int r=1;
+        int i=1;
+        int j=0;
+       
+        while(i<n && j<n){
+            if(arr[i]<=dep[j]){
+                p++;
+                i++;
+            }
+            else{
+                p--;
+                j++;
+            }
+            r=  Math.max(r,p);
+        }
+        return r;
+        
     }
     
 }
