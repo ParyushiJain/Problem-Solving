@@ -39,19 +39,19 @@ class meet{
         this.end=end;
     }
 }
-// class itemComparator implements Comparator<meet>
-// {  public int compare(meet a, meet b)
-//     {
-//         int r1 = a.end;
-//         int r2 =b.end;
-//         if(r1 < r2){
-//             return -1;
-//         } else if(r1 > r2) {
-//             return 1;
-//         }
-//         return 0;
-//     }
-// }
+class itemComparator implements Comparator<meet>
+{  public int compare(meet a, meet b)
+    {
+        int r1 = a.end;
+        int r2 =b.end;
+        if(r1 < r2){
+            return -1;
+        } else if(r1 > r2) {
+            return 1;
+        }
+        return 0;
+    }
+}
 class Solution 
 {
     //Function to find the maximum number of meetings that can
