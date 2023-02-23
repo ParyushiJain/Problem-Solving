@@ -62,7 +62,7 @@ class Solution
         for(int i=0;i<n;i++){
             arr[i]=new meet(start[i],end[i]);
         }
-        Arrays.sort(arr,new itemComparator());
+        Arrays.sort(arr,(a,b)->a.end-b.end);
         int c=1;
         int prevmeetend=arr[0].end;
         for(int i=1;i<n;i++){
