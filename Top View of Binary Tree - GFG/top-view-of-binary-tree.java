@@ -123,15 +123,12 @@ class Node{
     }
 }
 */
-
 class pair{
     Node node;
     int v;
-    int level;
-    public pair(Node node, int v,int level){
+    public pair(Node node,int v){
         this.node=node;
         this.v=v;
-        this.level=level;
     }
 }
 class Solution
@@ -141,50 +138,24 @@ class Solution
     static ArrayList<Integer> topView(Node root)
     {
         // add your code
-        ArrayList<Integer> rt=new ArrayList<>();
-        if(root==null) return rt;
-        TreeMap<Integer,TreeMap<Integer,ArrayList<Integer>>> tm=new TreeMap<>();
+        TreeMap<Integer,Integer> hm=new TreeMap<>();
+        ArrayList<Integer> r=new ArrayList<>();
+        if(root==null) return r;
         Queue<pair> q=new LinkedList<>();
-        q.offer(new pair(root,0,0));
+        q.add(new pair(root,0));
         while(!q.isEmpty()){
             pair p=q.poll();
-            Node crrNode=p.node;
-            int cl=p.level;
-            int cv=p.v;
-            if(tm.containsKey(cv)==false){
-                tm.put(cv,new TreeMap<Integer,ArrayList<Integer>>());
-
-            }
-            if(tm.get(cv).containsKey(cl)==false){
-                tm.get(cv).put(cl,new ArrayList());
-            }
-            
-            tm.get(cv).get(cl).add(crrNode.data);
-            Collections.sort(tm.get(cv).get(cl));
-            if(crrNode.left!=null){
-                q.add(new pair(crrNode.left,cv-1,cl+1));
-            }
-            if(crrNode.right!=null){
-                q.add(new pair(crrNode.right,cv+1,cl+1));
-            }
+            Node node=p.node;
+            int v=p.v;
+            if(!hm.containsKey(v)) hm.put(v,node.data);;
+          
+            if(node.left!=null) q.add(new pair(node.left,v-1));
+            if(node.right!=null) q.add(new pair(node.right,v+1));
             
         }
-        List<List<Integer>> r=new ArrayList();
-        for(int v:tm.keySet()){
-            List<Integer> inn=new ArrayList();
-            for(int l:tm.get(v).keySet()){
-                for(int i:tm.get(v).get(l)){
-                 inn.add(i);
-                }
-            }
-               r.add(inn);
+        for(int v:hm.keySet()){
+            r.add(hm.get(v));
         }
-        for(List<Integer> inr:r){
-            rt.add(inr.get(0));
-        }
-     
-        
-        return rt;
-        
+        return r;
     }
 }
