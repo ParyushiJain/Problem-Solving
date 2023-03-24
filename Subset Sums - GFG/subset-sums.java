@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 import java.io.*;
 import java.util.*;
@@ -27,6 +27,7 @@ class GFG
         }  
     }
 }
+
 // } Driver Code Ends
 
 
@@ -34,21 +35,17 @@ class GFG
 class Solution{
     ArrayList<Integer> al;
     ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
-        al=new ArrayList<Integer>();
-        int s=0;
-        solve(arr,s);
+        // code here
+        al=new ArrayList<>();
+        sol(arr,0,0);
         return al;
     }
-    public void solve(ArrayList<Integer> arr,int s){
-        if(arr.size()==0){
-            al.add(s);
+    void sol(ArrayList<Integer> arr,int i,int sum){
+        if(i==arr.size()){
+            al.add(sum);
             return;
         }
-        int s1=s;
-        int s2=s+arr.get(0);
-        ArrayList<Integer> ip=new ArrayList<Integer>(arr);
-        ip.remove(0);
-        solve(ip,s1);
-        solve(ip,s2);
+        sol(arr,i+1,sum+arr.get(i));
+        sol(arr,i+1,sum);
     }
 }
