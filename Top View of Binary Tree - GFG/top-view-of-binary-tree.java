@@ -139,23 +139,22 @@ class Solution
     {
         // add your code
         TreeMap<Integer,Integer> hm=new TreeMap<>();
-        ArrayList<Integer> r=new ArrayList<>();
-        if(root==null) return r;
+        ArrayList<Integer> ans=new ArrayList<>();
+        //if(root==null) return ans;
         Queue<pair> q=new LinkedList<>();
         q.add(new pair(root,0));
         while(!q.isEmpty()){
             pair p=q.poll();
-            Node node=p.node;
+            Node c=p.node;
             int v=p.v;
-            if(!hm.containsKey(v)) hm.put(v,node.data);;
-          
-            if(node.left!=null) q.add(new pair(node.left,v-1));
-            if(node.right!=null) q.add(new pair(node.right,v+1));
+            if(!hm.containsKey(v)) hm.put(v,c.data);
+            if(c.left!=null) q.add(new pair(c.left,v-1));
+            if(c.right!=null) q.add(new pair(c.right,v+1));
             
         }
-        for(int v:hm.keySet()){
-            r.add(hm.get(v));
+        for(int k:hm.keySet()){
+            ans.add(hm.get(k));
         }
-        return r;
+        return ans;
     }
 }
