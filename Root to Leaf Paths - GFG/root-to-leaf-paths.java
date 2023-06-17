@@ -134,27 +134,23 @@ class Node{
 
 */
 class Tree{
-    ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+     ArrayList<ArrayList<Integer>> ans;
     public ArrayList<ArrayList<Integer>> Paths(Node root){
         // Code here
-        if(root==null) return ans;
-        ArrayList<Integer> al=new ArrayList<>();
-        sol(root,al);
+        ans=new ArrayList<>();
+        sol(root,new ArrayList<>());
         return ans;
-        
-        
     }
-    public void sol(Node root,ArrayList<Integer> al){
+    public void sol(Node root,ArrayList<Integer> in){
         if(root==null) return;
-        al.add(root.data);
         if(root.left==null && root.right==null){
-            ans.add(new ArrayList<>(al));
-            al.remove(al.size()-1);
+            in.add(root.data);
+            ans.add(new ArrayList<>(in));
             return;
         }
-        sol(root.left,al);
-        sol(root.right,al);
-        al.remove(al.size()-1);
+        in.add(root.data);
+        sol(root.left,new ArrayList<>(in));
+        sol(root.right,new ArrayList<>(in));
     }
     
 }
