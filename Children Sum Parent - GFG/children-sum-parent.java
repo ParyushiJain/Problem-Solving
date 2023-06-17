@@ -138,27 +138,19 @@ class Tree
         // add your code here
         if(root.left!=null && root.right!=null){
             if(root.left.data+root.right.data==root.data){
-                return isSumProperty(root.left) & isSumProperty(root.right);
-               
-            }
-             else return 0;
-            
-        }
-        if(root.left==null && root.right!=null){
-            if(root.right.data==root.data){
-                return isSumProperty(root.right);
-            }
-            else return 0;
-            
-        }
-        if(root.right==null && root.left!=null){
-            if(root.left.data==root.data){
-                return isSumProperty(root.left);
+                return isSumProperty(root.left)&isSumProperty(root.right);
             }
             else return 0;
         }
-        return 1;
+        else if(root.left==null && root.right!=null){
+            if(root.right.data==root.data) return isSumProperty(root.right);
+            else return 0;
+        }
+        else if(root.left!=null && root.right==null){
+            if(root.left.data==root.data) return isSumProperty(root.left);
+            else return 0;
+        }
+        else return 1;
         
     }
-
 }
