@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.io.*;
 import java.util.*;
 import java.lang.*;
@@ -29,50 +29,30 @@ class GFG {
         }
     }
 }
+
 // } Driver Code Ends
 
-class meet{
-    int start;
-    int end;
-    public meet(int start,int end){
-        this.start=start;
-        this.end=end;
-    }
-}
-class itemComparator implements Comparator<meet>
-{  public int compare(meet a, meet b)
-    {
-        int r1 = a.end;
-        int r2 =b.end;
-        if(r1 < r2){
-            return -1;
-        } else if(r1 > r2) {
-            return 1;
-        }
-        return 0;
-    }
-}
+
 class Solution 
 {
     //Function to find the maximum number of meetings that can
     //be performed in a meeting room.
     public static int maxMeetings(int start[], int end[], int n)
     {
-        meet[] arr=new meet[n];
+        // add your code here
+        List<int[]> list=new ArrayList();
         for(int i=0;i<n;i++){
-            arr[i]=new meet(start[i],end[i]);
+            list.add(new int[]{start[i],end[i]});
         }
-        Arrays.sort(arr,(a,b)->a.end-b.end);
-        int c=1;
-        int prevmeetend=arr[0].end;
+        int ans=1;
+        Collections.sort(list,(a,b)->a[1]-b[1]);
+        int se=list.get(0)[1];
         for(int i=1;i<n;i++){
-            
-            if(arr[i].start>prevmeetend ){
-                c++;
-                prevmeetend=arr[i].end;
-                
+            if(list.get(i)[0]>se){
+                ans++;
+                se=list.get(i)[1];
             }
         }
-        return c;
+        return ans;
     }
 }
